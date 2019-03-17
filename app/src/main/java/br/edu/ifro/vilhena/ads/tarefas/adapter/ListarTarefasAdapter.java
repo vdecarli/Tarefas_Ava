@@ -1,6 +1,8 @@
 package br.edu.ifro.vilhena.ads.tarefas.adapter;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -46,6 +48,10 @@ public class ListarTarefasAdapter extends BaseAdapter {
         txtItemDescricao.setText(tarefa.getDescricao());
         SimpleDateFormat formatacao = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         txtItemDataHora.setText(formatacao.format(tarefa.getDataHora()));
+        if (tarefa.isRealizado()){
+            txtItemDescricao.setTextColor(Color.RED);
+            txtItemDescricao.setPaintFlags(txtItemDescricao.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+        }
         return view;
     }
 }
